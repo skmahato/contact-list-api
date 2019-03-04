@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: contact-list-api_development
+
+test:
+  <<: *default
+  database: contact-list-api_test
+
+production:
+  <<: *default
+  database: contact-list-api_production
+  username: contact-list-api
+  password: <%= ENV['CONTACT-LIST-API_DATABASE_PASSWORD'] %>
