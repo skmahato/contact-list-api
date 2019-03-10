@@ -13,6 +13,24 @@ class ContactsController < ApplicationController
     end
   end
 
+  def update
+    contact = Contact.find(params[:id])
+    if contact.update(contact_params)
+      render_success(:ok, contact)
+    else
+      render_error(:unprocessable_entity, contact.errors)
+    end
+  end
+
+  def destroy
+    contact = Contact.find(params[:id])
+    if contact.destroy
+      render_success(:ok, contact)
+    else
+      render_error(:unprocessable_entity, contact.errors)
+    end
+  end
+
   private
 
   def contact_params
