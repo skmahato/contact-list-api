@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
     if errors.is_a?(ActiveModel::Errors)
       render json: { errors: Hash[errors.keys.collect {|f| [f, errors.full_messages_for(f)] }] }, status: status
     else
-      render status: status, json: { errors: errors }
+      render json: { errors: errors }, status: status
     end
   end
 end
