@@ -5,7 +5,7 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
+Rails.application.config.middleware.insert_before Rack::Sendfile, Rack::Cors do
   allow do
     origins 'localhost:3000'
 
@@ -15,7 +15,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'reactjs-contact-list.herokuapp.com/'
+    origins 'reactjs-contact-list.herokuapp.com'
 
     resource '*',
       headers: :any,
