@@ -13,9 +13,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
-end
 
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins 'https://reactjs-contact-list.herokuapp.com/'
 
